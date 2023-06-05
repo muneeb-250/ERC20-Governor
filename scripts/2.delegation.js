@@ -6,7 +6,8 @@ async function main() {
     const MyToken = ethers.getContractAt("MyToken", "0x27A2925aEa4ff7Ca732c8c0520e2ffdAA1ad3406");
 
     const airdropTx = (await MyToken).connect(owner).delegate(owner.address);
-    console.log("Airdrop tx: ", airdropTx.hash);
+    const txReceipt = await airdropTx.wait();
+    console.log({ txReceipt });
 
 
 }
